@@ -1,7 +1,15 @@
 version: '3.4'
 services:
   drupal:
-    image: drush/drush:9-alpine
+    build:
+      context: .
+      args:
+        PROJECT_NAME: example
+        POSTGRES_USER: nobody
+        POSTGRES_PASSWORD: generic
+        DB_ADDR: database
+        POSTGRES_DB: drupal
+        SITE_NAME: Foobar
     container_name: drupal-drush
     volumes:
       - ./www:/app
