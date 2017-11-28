@@ -1,0 +1,21 @@
+version: '3.4'
+services:
+  drupal:
+    image: drush/drush:9-alpine
+    volumes:
+      - ./www:/app
+    depends_on:
+      - database
+      - server
+
+  server:
+    image: nginx:1.13.7-alpine
+    ports:
+      - 8080:80
+
+  database:
+    image: postgres:10-alpine
+    environment:
+      POSTGRES_PASSWORD: generic
+      POSTGRES_USER: nobody
+      POSTGRES_DB: drupal
