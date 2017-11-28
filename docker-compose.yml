@@ -2,6 +2,7 @@ version: '3.4'
 services:
   drupal:
     image: drush/drush:9-alpine
+    container_name: drupal-drush
     volumes:
       - ./www:/app
     depends_on:
@@ -9,11 +10,13 @@ services:
       - server
 
   server:
+    container_name: drupal-server
     image: nginx:1.13.7-alpine
     ports:
       - 8080:80
 
   database:
+    container_name: drupal-db
     image: postgres:10-alpine
     environment:
       POSTGRES_PASSWORD: generic
