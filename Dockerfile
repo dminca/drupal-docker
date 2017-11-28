@@ -9,6 +9,8 @@ ARG SITE_NAME
 RUN set -x \
   && drush dl drupal \
     --drupal-project-rename=${PROJECT_NAME} \
+  && pushd /app/${PROJECT_NAME} \
   && drush site-install standard \
     --db-url='pgsql://${POSTGRES_USER}:${POSTGRES_PASSWORD}@${DB_ADDR}/${POSTGRES_DB}' \
     --site-name=${SITE_NAME}
+
