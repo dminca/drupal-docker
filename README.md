@@ -4,12 +4,15 @@
 ### Services
 
 Web server:
+
 - Nginx 1.1+
 
 Database:
+
 - PostgreSQL 9.1.2+
 
 PHP:
+
 - PHP 5.5.9+
 
 Everything carefully running by the click of a `docker-compose up`
