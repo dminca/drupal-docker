@@ -1,27 +1,12 @@
 version: '3.4'
 services:
   drupal:
-    build:
-      context: .
-      args:
-        PROJECT_NAME: example
-        POSTGRES_USER: nobody
-        POSTGRES_PASSWORD: generic
-        DB_ADDR: database
-        POSTGRES_DB: drupal
-        SITE_NAME: Foobar
-    container_name: drupal-drush
-    volumes:
-      - ./www:/app
-    depends_on:
-      - database
-      - server
-
-  server:
-    container_name: drupal-server
-    image: nginx:1.13.7-alpine
+    image: drupal:latest
+    container_name: drupal
     ports:
       - 8080:80
+    links:
+      - database
 
   database:
     container_name: drupal-db
