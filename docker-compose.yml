@@ -1,21 +1,31 @@
 version: '3.4'
 services:
   drupal:
-    image: drupal:latest
-    container_name: drupal
+    build:
+      context: ./app
+    container_name: drupal-volume
+
+  server:
+    build:
+      context: ./server
+    container_name: drupal-server
     volumes:
-      - /var/www/html/modules
-      - /var/www/html/profiles
-      - /var/www/html/themes
+      - datavolume
     ports:
       - 8080:80
+    depends_on:
+      - db
+      - drupal
     links:
       - database
 
-  database:
+  db:
     container_name: drupal-db
     image: postgres:10-alpine
     environment:
       POSTGRES_PASSWORD: generic
       POSTGRES_USER: nobody
       POSTGRES_DB: drupal
+
+volumes:
+  - datavolume:/var/www/html
