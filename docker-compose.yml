@@ -10,14 +10,14 @@ services:
       context: ./server
     container_name: drupal-server
     volumes:
-      - datavolume
+      - drupal:/var/www/html
     ports:
       - 8080:80
     depends_on:
       - db
       - drupal
     links:
-      - database
+      - db
 
   db:
     container_name: drupal-db
@@ -28,4 +28,4 @@ services:
       POSTGRES_DB: drupal
 
 volumes:
-  - datavolume:/var/www/html
+  drupal:
