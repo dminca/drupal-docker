@@ -4,6 +4,8 @@ services:
     build:
       context: ./app
     container_name: drupal-volume
+    volumes:
+      - drupal:/var/www/html
 
   server:
     build:
