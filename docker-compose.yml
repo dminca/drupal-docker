@@ -8,8 +8,7 @@ services:
       - drupal:/var/www/html
 
   server:
-    build:
-      context: ./server
+    image: wizdevops/drupal:8-alpine
     container_name: drupal-server
     volumes:
       - drupal:/var/www/html
