@@ -56,7 +56,12 @@ RUN set -x \
   && echo 'date.timezone = "Europe/Bucharest"' >> /etc/php7/php.ini \
   && sed -i '/^user/c \user = nobody' /etc/php7/php-fpm.conf \
   && sed -i '/^group/c \group = nogroup' /etc/php7/php-fpm.conf \
-  && sed -i 's/^listen.allowed_clients/;listen.allowed_clients/' /etc/php7/php-fpm.conf
+  && sed -i 's/^listen.allowed_clients/;listen.allowed_clients/' /etc/php7/php-fpm.conf \
+  # install Drush
+  && wget -O drush.phar https://github.com/drush-ops/drush-launcher/releases/download/0.5.0/drush.phar \
+  && chmod +x drush.phar \
+  && mv drush.phar /usr/local/bin/drush \
+  && drush self-update
 RUN set -x \
   && rm -fv /usr/bin/php \
   && ln -s /usr/bin/php7 /usr/bin/php
