@@ -2,31 +2,34 @@ version: '3.4'
 services:
   drupal:
     build:
-      context: .
-      args:
-        PROJECT_NAME: example
-        POSTGRES_USER: nobody
-        POSTGRES_PASSWORD: generic
-        DB_ADDR: database
-        POSTGRES_DB: drupal
-        SITE_NAME: Foobar
-    container_name: drupal-drush
+      context: ./app
+    container_name: drupal-volume
     volumes:
-      - ./www:/app
-    depends_on:
-      - database
-      - server
+      - drupal:/var/www/html
 
   server:
+    image: wizdevops/drupal:8-alpine
     container_name: drupal-server
-    image: nginx:1.13.7-alpine
+    volumes:
+      - drupal:/var/www/html
     ports:
       - 8080:80
+    depends_on:
+      - db
+      - drupal
+    links:
+      - db
 
-  database:
+  db:
     container_name: drupal-db
     image: postgres:10-alpine
     environment:
       POSTGRES_PASSWORD: generic
       POSTGRES_USER: nobody
       POSTGRES_DB: drupal
+
+volumes:
+  drupal:
+    driver: local-persist
+    driver_opts:
+      mountpoint: /home/dminca/Repos/open-source/others/drupal-docker/www
