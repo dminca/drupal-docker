@@ -1,8 +1,7 @@
 version: '3.4'
 services:
   drupal:
-    build:
-      context: ./app
+    image: wizdevops/drupal:8-volume
     container_name: drupal-volume
     volumes:
       - drupal:/var/www/html
