@@ -47,6 +47,7 @@ RUN set -x \
     php7-iconv \
     php7-mbstring \
     php7-simplexml \
+    curl \
     tar \
   && rm -rf /var/cache/apk/* \
   && mkdir /tmp/nginx \
@@ -62,7 +63,9 @@ RUN set -x \
   && wget -O drush.phar https://github.com/drush-ops/drush-launcher/releases/download/0.5.0/drush.phar \
   && chmod +x drush.phar \
   && mv drush.phar /usr/local/bin/drush \
-  && drush self-update
+  && drush self-update \
+  # install composer
+  && curl -sS https://getcomposer.org/installer | /usr/bin/php7 -- --install-dir=/usr/bin --filename=composer
 RUN set -x \
   && rm -fv /usr/bin/php \
   && ln -s /usr/bin/php7 /usr/bin/php
