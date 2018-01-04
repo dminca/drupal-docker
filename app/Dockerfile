@@ -16,6 +16,9 @@ RUN set -x \
     && chmod 666 /var/www/html/sites/settings.php /var/www/html/sites/services.yml \
     && mkdir /var/www/html/sites/files \
     && chmod 777 /var/www/html/sites/files \
-    && chown -R nobody:nogroup /var/www/html/sites/default
+    && chown -R nobody:nogroup \
+      /var/www/html/sites/default \
+      /var/www/html/themes \
+      /var/www/html/modules
 USER nobody
 VOLUME /var/www/html
