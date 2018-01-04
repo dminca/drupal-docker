@@ -46,6 +46,7 @@ RUN set -x \
     php7-zlib \
     php7-iconv \
     php7-mbstring \
+    php7-simplexml \
     tar \
   && rm -rf /var/cache/apk/* \
   && mkdir /tmp/nginx \
