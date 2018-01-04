@@ -51,6 +51,7 @@ RUN set -x \
     php7-xmlwriter \
     curl \
     tar \
+    git \
   && rm -rf /var/cache/apk/* \
   && mkdir /tmp/nginx \
   && mkdir -p /var/www/html \
