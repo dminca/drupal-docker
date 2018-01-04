@@ -47,6 +47,7 @@ RUN set -x \
     php7-iconv \
     php7-mbstring \
     php7-simplexml \
+    php7-tokenizer \
     curl \
     tar \
   && rm -rf /var/cache/apk/* \
