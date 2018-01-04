@@ -1,7 +1,7 @@
 FROM wizdevops/alpine
 LABEL MAINTAINER="Daniel Andrei Minca <dminca@protonmail.com>"
-ENV DRUPAL_VERSION='drupal-8.4.3' \
-  DRUPAL_SHA='10f78082ba1199e38a3478b10f94e5753ee625c7e67fc9c59b59f2b15e7be09f'
+ENV DRUPAL_VERSION='drupal-8.4.4' \
+  DRUPAL_SHA='d2441f8e42f3dcb26f8ef00c8e07ee25c57f5437b0d9ac56119a4aa3930e7a5b'
 RUN set -x \
     && apk add --update --no-cache \
       tar \
