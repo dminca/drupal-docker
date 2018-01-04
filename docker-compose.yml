@@ -30,3 +30,6 @@ services:
 
 volumes:
   drupal:
+    driver: local-persist
+    driver_opts:
+      mountpoint: /home/dminca/Repos/open-source/others/drupal-docker/www
