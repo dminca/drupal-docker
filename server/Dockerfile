@@ -44,11 +44,13 @@ RUN set -x \
     php7-ssh2 \
     php7-phar \
     php7-zlib \
+    php7-iconv \
+    php7-mbstring \
     tar \
   && rm -rf /var/cache/apk/* \
   && mkdir /tmp/nginx \
   && mkdir -p /var/www/html \
-  && chown -R nginx:nginx /var/www/html \
+  && chown -R nobody:nogroup /var/www/html \
   && sed -i 's/memory_limit = .*/memory_limit = 768M/' /etc/php7/php.ini \
   && sed -i 's/post_max_size = .*/post_max_size = 50M/' /etc/php7/php.ini \
   && echo 'date.timezone = "Europe/Bucharest"' >> /etc/php7/php.ini \
