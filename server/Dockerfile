@@ -52,6 +52,7 @@ RUN set -x \
     curl \
     tar \
     git \
+    postgresql-client \
   && rm -rf /var/cache/apk/* \
   && mkdir /tmp/nginx \
   && mkdir -p /var/www/html \
